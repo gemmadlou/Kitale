@@ -22,8 +22,14 @@ Check if a the apache config is correct
 sudo apache2ctl configtest
 ```
 
-## Adding MySQL users
+#### Adding MySQL users
 
 ```
 GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';
+```
+
+#### Orderly Mysql Results
+
+```
+PAGER less -SFX
 ```
