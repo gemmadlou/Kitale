@@ -1,10 +1,10 @@
 # Docker Util
 
-#### Useful commands
+#### Getting started
 
 Create new container
 ```
-docker run -d -p 3306:3306 --name="mydockercontainer" -v "$(pwd):/var/www" ubuntu:14.04 tail -f /dev/null
+docker run -d -p 8000:80 -p 3306:3306 --name="mydockercontainer" -v "$(pwd):/var/www" ubuntu:14.04 tail -f /dev/null
 ```
 
 Enter into the container's terminal
@@ -12,7 +12,13 @@ Enter into the container's terminal
 docker exec -it mydockercontainer bash
 ```
 
+## Useful commands
+
 Get docker's IP
+
+> If you want to be able to have /etc/hosts names configured against an actual IP, you will need to get the 
+> IP of the docker container.
+
 ```
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <CONTAINER_NAME>
 ```
@@ -26,6 +32,11 @@ sudo apache2ctl configtest
 
 ```
 GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';
+```
+
+Query only a certain table
+```
+mysql -e "select * from myTable" -u myuser -pxxxxxxxx mydatabase > dump.sql
 ```
 
 #### Orderly Mysql Results

@@ -14,9 +14,9 @@ sudo apt-get install apache2 -y
 sudo apt-get install vim -y
 
 # The apache2 config that has the global ServerName
-cp /var/www/docker/dir.conf /etc/apache2/mods-available/dir.conf
-cp /var/www/docker/000-default.conf /etc/apache2/sites-available/000-default.conf
-cp /var/www/docker/apache2.conf /etc/apache2/apache2.conf
+cp /var/www/_ops/dir.conf /etc/apache2/mods-available/dir.conf
+cp /var/www/_ops/000-default.conf /etc/apache2/sites-available/000-default.conf
+cp /var/www/_ops/apache2.conf /etc/apache2/apache2.conf
 
 # Connect PHP to Apache
 sudo apt-get install libapache2-mod-php7.1 -y
@@ -55,3 +55,21 @@ usermod -d /var/lib/mysql/ mysql
 chmod 600 ~/.my.cnf
 chown root: ~/.my.cnf
 
+# Installing Nodejs
+
+sudo apt-get install curl -y
+
+curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt-get install nodejs -y
+
+nodejs -v
+npm -v
+
+sudo apt-get install build-essential -y
+
+# Install composer
+
+./install/composer.sh
+mv ./install/composer.phar /usr/local/bin/composer
+composer -v
