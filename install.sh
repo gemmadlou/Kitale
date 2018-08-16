@@ -1,8 +1,11 @@
-
+# Updates and upgrades
 apt update -y
 apt upgrade -y
+
+# By default, Ubuntu does not have sudo installewd
 apt install sudo -y
 
+# Installing PHP
 sudo apt-get install software-properties-common -y
 sudo LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 sudo apt-get update
@@ -11,7 +14,8 @@ sudo apt-get install php7.1 php7.1-cli php7.1-common php7.1-xml php7.1-curl php7
 
 sudo apt-get install apache2 -y
 
-sudo apt-get install vim -y
+# Installing Helpful Utils
+sudo apt-get install vim wget curl -y
 
 # The apache2 config that has the global ServerName
 cp /var/www/_ops/dir.conf /etc/apache2/mods-available/dir.conf
@@ -23,9 +27,6 @@ sudo apt-get install libapache2-mod-php7.1 -y
 sudo a2enmod php7.1 rewrite expires headers ssl
 
 sudo service apache2 start -y
-
-# Install wget
-sudo apt-get install wget -y
 
 # Installing MySQL
 
@@ -56,8 +57,6 @@ chmod 600 ~/.my.cnf
 chown root: ~/.my.cnf
 
 # Installing Nodejs
-
-sudo apt-get install curl -y
 
 curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
