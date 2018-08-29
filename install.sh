@@ -41,7 +41,7 @@ apt-get update
 
 # Install MySQL
 
-MYSQL_PASS=""
+MYSQL_PASS="root"
 
 touch /root/.my.cnf
 debconf-set-selections <<< "mysql-community-server mysql-community-server/data-dir select ''"
@@ -72,3 +72,6 @@ sudo apt-get install build-essential -y
 ./install/composer.sh
 mv ./install/composer.phar /usr/local/bin/composer
 composer -v
+
+# Add user
+

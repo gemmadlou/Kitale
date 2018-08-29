@@ -44,3 +44,11 @@ mysql -e "select * from myTable" -u myuser -pxxxxxxxx mydatabase > dump.sql
 ```
 PAGER less -SFX
 ```
+
+Fixing syntax errors:
+
+https://stackoverflow.com/questions/36950857/sqlstate42000-syntax-error-or-access-violation-1055-expression-3-of-select 
+
+```
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+```
